@@ -203,9 +203,7 @@ export class DataTable extends Component {
             this.restoreState(state);
         }
 
-        if (Object.keys(state).length) {
-            this.state = state;
-        }
+        this.state = state;
 
         this.onPageChange = this.onPageChange.bind(this);
         this.onSort = this.onSort.bind(this);
