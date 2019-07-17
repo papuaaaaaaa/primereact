@@ -55,15 +55,13 @@ interface DataTableProps {
     csvSeparator?: string;
     exportFilename?: string;
     rowGroupMode?: string;
-    autoLayout?:boolean;
-    loading?:boolean;
-    loadingIcon?:string;
-    tabIndex?:string;
-    stateKey?:string;
-    stateStorage?:string;
-    groupField?:string;
-    onSelectionChange?(e: {originalEvent: Event, value: any}): void;
-    onContextMenuSelectionChange?(e: {originalEvent: Event, value: any}): void;
+    autoLayout?: boolean;
+    loading?: boolean;
+    loadingIcon?: string;
+    tabIndex?: string;
+    stateKey?: string;
+    stateStorage?: string;
+    groupField?: string;
     saveState?: {
         paginator?: boolean;
         sortField?: boolean;
@@ -73,29 +71,54 @@ interface DataTableProps {
         expandedRows?: boolean;
         selection?: boolean;
     };
+
+    onSelectionChange?(e: { originalEvent: Event, value: any }): void;
+
+    onContextMenuSelectionChange?(e: { originalEvent: Event, value: any }): void;
+
     rowExpansionTemplate?(data: any): JSX.Element | undefined;
-    onRowToggle?(e: {data: any[]}): void;
+
+    onRowToggle?(e: { data: any[] }): void;
+
     rowClassName?(rowData: any): object;
+
     rowGroupHeaderTemplate?(data: any, index: number): React.ReactNode | undefined;
+
     rowGroupFooterTemplate?(data: any, index: number): React.ReactNode | undefined;
-    onColumnResizeEnd?(e: {element: HTMLElement, delta: number}): void;
-    onSort?(e: {sortField: string, sortOrder: number, multiSortMeta: any}): void;
-    onPage?(e: {first: number, rows: number}): void;
+
+    onColumnResizeEnd?(e: { element: HTMLElement, delta: number }): void;
+
+    onSort?(e: { sortField: string, sortOrder: number, multiSortMeta: any }): void;
+
+    onPage?(e: { first: number, rows: number }): void;
+
     onFilter?(filters: any[]): void;
-    onVirtualScroll?(e: {first: number, rows: number}): void;
-    onRowClick?(e: {originalEvent: Event, data: any, index: number}): void;
-    onRowDoubleClick?(e: {originalEvent: Event, data: any, index: number}): void;
-    onRowSelect?(e: {originalEvent: Event, data: any, type: string}): void;
-    onRowUnselect?(e: {originalEvent: Event, data: any, type: string}): void;
-    onRowExpand?(e: {originalEvent: Event, data: any}): void;
-    onRowCollapse?(e: {originalEvent: Event, data: any}): void;
-    onContextMenu?(e: {originalEvent: Event, data: any}): void;
-    onColReorder?(e: {dragIndex: number, dropIndex: number, columns: any}): void;
-    onRowReorder?(e: {originalEvent: Event, value: any, dragIndex: number, dropIndex: number}): void;
+
+    onVirtualScroll?(e: { first: number, rows: number }): void;
+
+    onRowClick?(e: { originalEvent: Event, data: any, index: number }): void;
+
+    onRowDoubleClick?(e: { originalEvent: Event, data: any, index: number }): void;
+
+    onRowSelect?(e: { originalEvent: Event, data: any, type: string }): void;
+
+    onRowUnselect?(e: { originalEvent: Event, data: any, type: string }): void;
+
+    onRowExpand?(e: { originalEvent: Event, data: any }): void;
+
+    onRowCollapse?(e: { originalEvent: Event, data: any }): void;
+
+    onContextMenu?(e: { originalEvent: Event, data: any }): void;
+
+    onColReorder?(e: { dragIndex: number, dropIndex: number, columns: any }): void;
+
+    onRowReorder?(e: { originalEvent: Event, value: any, dragIndex: number, dropIndex: number }): void;
+
     onValueChange?(value: any[]): void;
 }
 
-export class DataTable extends React.Component<DataTableProps,any> {
-    public exportCSV():void;
-    public filter<T>(value:T, field:string, mode:string):void;
+export class DataTable extends React.Component<DataTableProps, any> {
+    public exportCSV(): void;
+
+    public filter<T>(value: T, field: string, mode: string): void;
 }
