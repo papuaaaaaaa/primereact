@@ -1,10 +1,10 @@
 {
-  "name": "primereact",
-  "version": "3.1.8-SNAPSHOT",
-  "homepage": "/primereact",
+  "name": "@r1o/primereact",
+  "version": "3.1.8-SNAPSHOT.1",
+  "homepage": "https://github.com/arayaryoma/primereact",
   "repository": {
     "type": "git",
-    "url": "https://github.com/primefaces/primereact.git"
+    "url": "https://github.com/arayaryoma/primereact.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -44,7 +44,7 @@
     "eject": "react-scripts eject",
     "compile-components": "./node_modules/\\@babel/cli/bin/babel.js src/components --out-dir components --presets=@babel/env,@babel/react --plugins=@babel/plugin-proposal-class-properties --copy-files",
     "build-exports": "gulp -f ./gulpfile.js",
-    "prepublish": "npm run compile-components && npm run build-exports"
+    "prepare": "npm run compile-components && npm run build-exports"
   },
   "eslintConfig": {
     "extends": "react-app"
