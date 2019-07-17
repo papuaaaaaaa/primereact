@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/primereact.svg)](https://badge.fury.io/js/primereact)
-[![Join the chat at https://gitter.im/primefaces/primereact](https://badges.gitter.im/primefaces/primereact.svg)](https://gitter.im/primefaces/primereact?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+# Forked from primefaces/primereact
+Including bug fixes, and some new features.
 
 # PrimeReact
 
@@ -23,8 +23,8 @@ See [PrimeReact homepage](https://www.primefaces.org/primereact) for live showca
 PrimeReact is available at npm, if you have an existing application run the following command to download it to your project.
 
 ```
-npm install primereact --save
-npm install primeicons --save
+npm install @r1o/primereact --save
+npm install @r1o/primeicons --save
 ```
 
 ## Import
@@ -55,17 +55,17 @@ dependencies: {
 The css dependencies are as follows, note that you may change the theme with another one of your choice.
 
 ```
-primereact/resources/themes/nova-light/theme.css
-primereact/resources/primereact.min.css
+@r1o/primereact/resources/themes/nova-light/theme.css
+@r1o/primereact/resources/primereact.min.css
 primeicons/primeicons.css
 ```
 
 If you are using a bundler such as webpack with a css loader you may also import them to your main application component, an example from create-react-app would be.
 
 ```javascript
-import 'primereact/resources/themes/nova-light/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import '@r1o/primereact/resources/themes/nova-light/theme.css';
+import '@r1o/primereact/resources/primereact.min.css';
+import '@r1o/primeicons/primeicons.css';
 ```
 
 ## QuickStart
