@@ -64,6 +64,15 @@ interface DataTableProps {
     groupField?:string;
     onSelectionChange?(e: {originalEvent: Event, value: any}): void;
     onContextMenuSelectionChange?(e: {originalEvent: Event, value: any}): void;
+    saveState?: {
+        paginator?: boolean;
+        sortField?: boolean;
+        filters?: boolean;
+        columnWidths?: boolean;
+        columnOrder?: boolean;
+        expandedRows?: boolean;
+        selection?: boolean;
+    };
     rowExpansionTemplate?(data: any): JSX.Element | undefined;
     onRowToggle?(e: {data: any[]}): void;
     rowClassName?(rowData: any): object;

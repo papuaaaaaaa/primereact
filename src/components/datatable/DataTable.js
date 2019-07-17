@@ -80,6 +80,7 @@ export class DataTable extends Component {
         tabIndex: '0',
         stateKey: null,
         stateStorage: 'session',
+        saveState: {},
         onColumnResizeEnd: null,
         onSort: null,
         onPage: null,
@@ -163,6 +164,15 @@ export class DataTable extends Component {
         tabIndex: PropTypes.string,
         stateKey: PropTypes.string,
         stateStorage: PropTypes.string,
+        saveState: {
+            paginator: PropTypes.bool,
+            sortField: PropTypes.bool,
+            filters: PropTypes.bool,
+            columnWidths: PropTypes.bool,
+            columnOrder: PropTypes.bool,
+            expandedRows: PropTypes.bool,
+            selection: PropTypes.bool,
+        },
         onColumnResizeEnd: PropTypes.func,
         onSort: PropTypes.func,
         onPage: PropTypes.func,
@@ -263,34 +273,34 @@ export class DataTable extends Component {
         const storage = this.getStorage();
         let state = {};
 
-        if (this.props.paginator) {
+        if (this.props.saveState.paginator && this.props.paginator) {
             state.first = this.getFirst();
             state.rows = this.getRows();
         }
 
-        if (this.getSortField()) {
+        if (this.props.saveState.sortField && this.getSortField()) {
             state.sortField = this.getSortField();
             state.sortOrder = this.getSortOrder();
             state.multiSortMeta = this.getMultiSortMeta();
         }
 
-        if (this.hasFilter()) {
+        if (this.props.saveState.filters && this.hasFilter()) {
             state.filters = this.getFilters();
         }
 
-        if (this.props.resizableColumns) {
+        if (this.props.saveState.columnWidths && this.props.resizableColumns) {
             this.saveColumnWidths(state);
         }
 
-        if (this.props.reorderableColumns) {
+        if (this.props.saveState.columnOrder && this.props.reorderableColumns) {
             state.columnOrder = this.state.columnOrder;
         }
 
-        if (this.props.expandedRows) {
+        if (this.props.saveState.expandedRows && this.props.expandedRows) {
             state.expandedRows = this.props.expandedRows;
         }
 
-        if (this.props.selection && this.props.onSelectionChange) {
+        if (this.props.saveState.selection && this.props.selection && this.props.onSelectionChange) {
             state.selection = this.props.selection;
         }
 
