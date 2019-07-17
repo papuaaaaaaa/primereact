@@ -44,7 +44,7 @@
     "eject": "react-scripts eject",
     "compile-components": "./node_modules/\\@babel/cli/bin/babel.js src/components --out-dir components --presets=@babel/env,@babel/react --plugins=@babel/plugin-proposal-class-properties --copy-files",
     "build-exports": "gulp -f ./gulpfile.js",
-    "preinstall": "npm run compile-components && npm run build-exports"
+    "prepublish": "npm run compile-components && npm run build-exports"
   },
   "eslintConfig": {
     "extends": "react-app"
