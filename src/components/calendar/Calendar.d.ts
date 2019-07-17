@@ -10,6 +10,7 @@ export interface LocaleSettings {
     monthNamesShort: string[];
     today: string;
     clear: string;
+    language?: string;
 }
 
 export interface DateMetaData {

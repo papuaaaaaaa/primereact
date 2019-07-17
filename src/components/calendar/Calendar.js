@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {InputText} from '../inputtext/InputText';
@@ -52,7 +52,8 @@ export class Calendar extends Component {
             monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
             today: 'Today',
             clear: 'Clear',
-            weekHeader: 'Wk'
+            weekHeader: 'Wk',
+            language: 'en',
         },
         dateFormat: 'mm/dd/yy',
         panelStyle: null,
@@ -1661,8 +1662,23 @@ export class Calendar extends Component {
 
         return (
             <div className="p-datepicker-title">
-                {month}
-                {year}
+                {(() => {
+                    if (this.props.locale.language === 'ja-JP') {
+                        return (
+                            <Fragment>
+                                {year}
+                                {month}
+                            </Fragment>
+                        );
+                    } else {
+                        return (
+                            <Fragment>
+                                {month}
+                                {year}
+                            </Fragment>
+                        );
+                    }
+                })()}
             </div>
         );
     }
