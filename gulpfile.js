@@ -1,44 +1,28 @@
-'use strict';
+const {parallel, dest, src} = require('gulp');
+const concat = require('gulp-concat');
+const uglifycss = require('gulp-uglifycss');
+const rename = require('gulp-rename');
+const flatten = require('gulp-flatten');
 
-var gulp = require('gulp'),
-    concat = require('gulp-concat'),
-    uglifycss = require('gulp-uglifycss'),
-    rename = require('gulp-rename'),
-    del = require('del'),
-    flatten = require('gulp-flatten');
-    
-gulp.task('build-css', function() {
-    return gulp.src([
-        'src/components/common/Common.css',
-		'src/components/**/*.css'
-    ])
-	.pipe(concat('primereact.css'))
-	.pipe(gulp.dest('resources'))
+const css = () => src([
+    'src/components/common/Common.css',
+    'src/components/**/*.css'
+])
+    .pipe(concat('primereact.css'))
+    .pipe(dest('resources'))
     .pipe(uglifycss({"uglyComments": true}))
     .pipe(rename('primereact.min.css'))
-	.pipe(gulp.dest('resources'));
-});
+    .pipe(dest('resources'));
 
-gulp.task('build-themes', function() {
-    return gulp.src([
-        'public/resources/themes/**/*'
-    ])
-    //.pipe(uglifycss({"uglyComments": true}))
-    .pipe(gulp.dest('resources/themes'));
-})
+const themes = () => src([
+    'public/resources/themes/**/*'
+]).pipe(dest('resources/themes'));
 
-gulp.task('images', function() {
-    return gulp.src(['src/components/**/images/*.png', 'src/components/**/images/*.gif'])
-        .pipe(flatten())
-        .pipe(gulp.dest('resources/images'));
-});
+const images = () => src(['src/components/**/images/*.png', 'src/components/**/images/*.gif'])
+    .pipe(flatten())
+    .pipe(dest('resources/images'));
 
-gulp.task('build-exports', function() {
-    return gulp.src(['exports/*.js','exports/*.d.ts'])
-        .pipe(gulp.dest('./'));
-});
+const build = () => src(['exports/*.js', 'exports/*.d.ts']).pipe(dest('./'));
 
-//Building project with run sequence
-gulp.task('build-resources', ['build-css','images', 'build-themes']);
+exports.default = parallel(build, css, images, themes);
 
-        
