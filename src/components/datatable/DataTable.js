@@ -205,8 +205,7 @@ export class DataTable extends Component {
         if (this.isStateful()) {
             this.restoreState(state);
         }
-
-        this.state = state;
+        if (Object.keys(state).length) this.state = state;
 
         this.onPageChange = this.onPageChange.bind(this);
         this.onSort = this.onSort.bind(this);
@@ -263,6 +262,7 @@ export class DataTable extends Component {
     }
 
     saveState() {
+        if (!this.state) return;
         const storage = this.getStorage();
         let state = {};
 
@@ -1180,7 +1180,7 @@ export class DataTable extends Component {
         let columns = React.Children.toArray(this.props.children);
 
         if (columns && columns.length) {
-            if (this.props.reorderableColumns && this.state.columnOrder) {
+            if (this.props.reorderableColumns && this.state && this.state.columnOrder) {
                 let orderedColumns = [];
                 for (let columnKey of this.state.columnOrder) {
                     let column = this.findColumnByKey(columns, columnKey);
