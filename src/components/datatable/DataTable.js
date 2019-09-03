@@ -205,8 +205,7 @@ export class DataTable extends Component {
         if (this.isStateful()) {
             this.restoreState(state);
         }
-        if (Object.keys(state).length) this.state = state;
-
+        this.state = Object.keys(state).length ? state : {};
         this.onPageChange = this.onPageChange.bind(this);
         this.onSort = this.onSort.bind(this);
         this.onFilter = this.onFilter.bind(this);
