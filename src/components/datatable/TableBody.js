@@ -493,7 +493,7 @@ export class TableBody extends Component {
                 //row expansion
                 if(expanded) {
                     let expandedRowContent = this.props.rowExpansionTemplate(rowData);
-                    let expandedRow = <tr key={i + '_expanded'}><td colSpan={this.props.children.length}>{expandedRowContent}</td></tr>
+                    let expandedRow = <tr key={i + '_expanded'}><td>{expandedRowContent}</td></tr>
                     rows.push(expandedRow);
                 }
                 
